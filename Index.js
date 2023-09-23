@@ -34,7 +34,7 @@ try{
     if(check==null && check1==null)
     {
         User.insertMany([data])
-        res.render("/")
+        res.render("user_sign_in")
     }
     else{
         res.send("Duplicate name or password")
@@ -44,6 +44,7 @@ catch(err){
     res.send("Timed out")
 }
 })
+
 
 app.post("/signup",async function(req,res){
     try
