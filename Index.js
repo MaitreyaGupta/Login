@@ -51,7 +51,7 @@ const data={
 }
 catch(err)
 {
-    res,send("Wrong information")
+    res.send("Wrong information")
 }
 })
 
