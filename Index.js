@@ -24,17 +24,17 @@ app.get("/signup",function(req,res){
 })
 
 app.post("/",async function(req,res){
-try{
 const data={
         email:req.body.email,
         password:req.body.password,
     }
+try{
     const check=await User.findOne({email:req.body.email})
     const check1=await User.findOne({password:req.body.password})
     if(check==null && check1==null)
     {
         User.insertMany([data])
-        res.redirect("/")
+        res.render("/")
     }
     else{
         res.send("Duplicate name or password")
