@@ -1,6 +1,7 @@
-const express=require("express")
+ const express=require("express")
 const app=express() 
 const bodyparser=require("body-parser")
+const mongodb=require("./config/mongoose")
 const User=require("./models/user")
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.static("public"))
@@ -9,6 +10,7 @@ app.set("view engine","ejs")
 //const expressLayouts=require("./views/ExpressLayouts")
 //app.use(expressLayouts)
 const port=process.env.PORT||3030
+
 
 app.listen(port,function(req,res){
     console.log("Listening")
@@ -26,21 +28,17 @@ const data={
         email:req.body.email,
         password:req.body.password,
     }
-    try{
     const check=await User.findOne({email:req.body.email})
     const check1=await User.findOne({password:req.body.password})
     if(check==null && check1==null)
     {
         User.insertMany([data])
-        res.render("user_sign_in")
+        res.redirect("/")
     }
     else{
         res.send("Duplicate name or password")
     }
-}
-catch(err){
-    res.send("Timed out")
-}
+ 
 })
 
 app.post("/signup",async function(req,res){
@@ -56,7 +54,7 @@ app.post("/signup",async function(req,res){
         res.send("Wrong information")
      }
     }
-    catch(err){
+    catch{
         res.send("Wrong details")
     }
 })
