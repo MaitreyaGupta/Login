@@ -23,7 +23,7 @@ app.get("/signup",function(req,res){
     res.render("user_sign_up")
 })
 
-app.post("/",async function(req,res,err){
+app.post("/",async function(req,res){
 const data={
         email:req.body.email,
         password:req.body.password,
