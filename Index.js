@@ -24,6 +24,7 @@ app.get("/signup",function(req,res){
 })
 
 app.post("/",async function(req,res){
+try{
 const data={
         email:req.body.email,
         password:req.body.password,
@@ -38,7 +39,10 @@ const data={
     else{
         res.send("Duplicate name or password")
     }
- 
+}
+catch(err){
+    res.send("Timed out")
+}
 })
 
 app.post("/signup",async function(req,res){
