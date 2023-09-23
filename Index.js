@@ -9,7 +9,8 @@ app.set("view engine","ejs")
  
 //const expressLayouts=require("./views/ExpressLayouts")
 //app.use(expressLayouts)
-const port=process.env.port||3030
+const port=process.env.PORT
+
 
 app.listen(port,function(req,res){
     console.log("Listening")
