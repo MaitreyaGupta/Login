@@ -54,7 +54,7 @@ app.post("/signup",async function(req,res){
         res.send("Wrong information")
      }
     }
-    catch{
+    catch(err){
         res.send("Wrong details")
     }
 })
