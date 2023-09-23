@@ -5,9 +5,7 @@ const User=require("./models/user")
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.static("public"))
 app.set("view engine","ejs")
- var mongoose=require("mongoose")
  
- mongoose.connect("mongodb://localhost:27017/starter")
 //const expressLayouts=require("./views/ExpressLayouts")
 //app.use(expressLayouts)
 const port=process.env.PORT||3030
