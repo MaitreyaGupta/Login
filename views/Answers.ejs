@@ -1,1 +1,9 @@
-<h1>Here lies answers</h1>
+ <%- include("header") %>
+<body class="body"><link rel="stylesheet" href="Starter.css">
+<%practice.forEach(function(a1){%>
+    <section class="Question-box">
+    <p><%= a1.name%></p>
+    <p><%= a1.Question%></p>
+    </section>
+    <% }) %>
+</body>
