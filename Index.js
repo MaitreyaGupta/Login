@@ -1,9 +1,10 @@
-const express=require("express")
+ const express=require("express")
 const app=express() 
 const bodyparser=require("body-parser")
 const mongodb=require("./config/mongoose")
 const User=require("./models/user")
 const Questions=require("./models/Questions")
+const Question = require("./models/Questions")
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.static("public"))
 app.set("view engine","ejs")
@@ -70,8 +71,13 @@ app.post("/Question",async function(req,res){
         Question:req.body.Question,
     }
     Questions.insertMany([data1])
-    res.render("Answers")
+    res.redirect("Answers")
 })
-app.get("/Answers",function(req,res){
-    res.render("Answers")
+app.get("/Answers",async function(req,res){
+    var data1=await Questions.find() 
+    res.render("Answers",{
+    Questions1:req.body.name,
+    Questions2:req.body.Questions,
+    practice:data1,
+    })
 })
