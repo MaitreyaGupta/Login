@@ -2,3 +2,8 @@
     background-color: red;
     text-decoration-color: yellow;
 }
+.Question-box{
+    box-shadow:inherit;
+    border-color: blueviolet;
+    background-color: yellow;
+}
