@@ -6,4 +6,13 @@
     <p><%= a1.Question%></p>
     </section>
     <% }) %>
+<form action="/Answers" method="post">
+    <input placeholder="Answer the question" name="Answer"></input>
+    <button type="submit">Post answer</button>
+</form>
+<%practice1.forEach(function(a2){%>
+    <section class="Answer-box">
+        <p><%= a2.Answer %></p>
+</section>
+<% }) %>
 </body>
