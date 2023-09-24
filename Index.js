@@ -5,6 +5,7 @@ const mongodb=require("./config/mongoose")
 const User=require("./models/user")
 const Questions=require("./models/Questions")
 const Question = require("./models/Questions")
+const Answer=require("./models/Answers")
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.static("public"))
 app.set("view engine","ejs")
@@ -65,6 +66,7 @@ app.get("/Index",function(req,res){
     res.render("Index")
 })
 
+ 
 app.post("/Question",async function(req,res){
     const data1={
         name:req.body.name,
@@ -73,11 +75,36 @@ app.post("/Question",async function(req,res){
     Questions.insertMany([data1])
     res.redirect("Answers")
 })
+
+app.post("/Answers",async function(req,res){
+    const data2={
+        Answer:req.body.Answer, 
+    }
+    if(data2.Answer==null)
+    {
+        res.redirect("Answers")
+    }
+    else{
+    Answer.insertMany([data2])
+    res.redirect("Answers")
+    }
+})
 app.get("/Answers",async function(req,res){
     var data1=await Questions.find() 
+    var data2=await Answer.find()
+    if(data2!=null){
     res.render("Answers",{
     Questions1:req.body.name,
     Questions2:req.body.Questions,
     practice:data1,
+    practice1:data2,
     })
+}
+else{
+    res.render("Answers",{
+        Questions1:req.body.name,
+        Questions2:req.body.Questions,
+        practice:data1,
+        })
+}
 })
