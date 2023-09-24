@@ -6,4 +6,6 @@
     box-shadow:inherit;
     border-color: blueviolet;
     background-color: yellow;
+    font-style: italic;
+    box-sizing: border-box;
 }
