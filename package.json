@@ -16,6 +16,6 @@
     "node": "^20.6.0",
     "redis": "^4.6.10"
   },
-  "devDependencies": {},
   "description": ""
 }
+
